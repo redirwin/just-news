@@ -4,20 +4,20 @@ import { connect } from "react-redux";
 import "./styles/App.scss";
 
 // action creators
-import { showName } from "./store/actions";
+import { getNews } from "./store/actions";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
   }
 
-  showName = e => {
-    this.props.showName();
-    // console.log("In showName!");
+  getNews = e => {
+    this.props.getNews();
+    // console.log("In getNews!");
   };
 
   render() {
-    return <button onClick={this.showName}>Show Name</button>;
+    return <button onClick={this.getNews}>Show Name</button>;
   }
 }
 
@@ -29,5 +29,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { showName }
+  { getNews }
 )(App);

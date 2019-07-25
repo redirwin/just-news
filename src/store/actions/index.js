@@ -1,9 +1,8 @@
-export const SHOW_NAME = "SHOW_NAME";
+export const FETCH_NEWS_START = "FETCH_NEWS_START";
+export const FETCH_NEWS_SUCCESS = "FETCH_NEWS_SUCCESS ";
+export const FETCH_NEWS_FAILURE = "FETCH_NEWS_FAILURE ";
 
-export function showName(name) {
-  console.log("In action!");
-  return {
-    type: SHOW_NAME,
-    payload: name
-  };
-}
+export const getNews = () => dispatch => {
+  // console.log("In action!");
+  dispatch({ type: FETCH_NEWS_START });
+};
