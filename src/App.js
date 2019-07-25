@@ -23,10 +23,10 @@ const mapStateToProps = state => {
 const AppWrapper = styled.div`
   width: 80%;
   margin: 5rem auto;
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
 
   button {
   }
