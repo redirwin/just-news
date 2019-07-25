@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import Loader from "react-loader-spinner";
 
 import "../styles/App.scss";
 
@@ -9,37 +10,30 @@ import { getNews } from "../store/actions";
 // components
 import Headline from "./Headline";
 
-class Headlines extends React.Component {
-  constructor(props) {
-    super(props);
+const Headlines = props => {
+  function getNews(e) {
+    props.getNews();
   }
 
-  getNews = e => {
-    this.props.getNews();
-  };
-
-  headlines = () => {
-    this.props.headlines.map(headline => {
-      return <div>{headline.title}</div>;
-    });
-  };
-
-  render() {
-    return (
-      <div>
-        <button onClick={this.getNews}>Get the News!</button>
-        {this.props.headlines.map(headline => {
-          return <Headline headline={headline} />;
-        })}
-      </div>
-    );
+  if (props.isFetching) {
+    return <Loader type="Puff" color="#00BFFF" height="100" width="100" />;
   }
-}
+
+  return (
+    <div>
+      <button onClick={getNews}>Get the News!</button>
+      {props.headlines.map(headline => {
+        return <Headline headline={headline} />;
+      })}
+    </div>
+  );
+};
 
 const mapStateToProps = state => {
   return {
     totalResults: state.totalResults,
-    headlines: state.headlines
+    headlines: state.headlines,
+    isFetching: state.isFetching
   };
 };
 
