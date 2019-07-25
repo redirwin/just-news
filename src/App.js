@@ -1,12 +1,24 @@
 import React from "react";
 import "./styles/App.scss";
+import { connect } from "react-redux";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header" />
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return <p>Hello</p>;
+  }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    data: state.name
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  {}
+)(App);

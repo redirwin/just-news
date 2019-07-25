@@ -1,5 +1,7 @@
 function reducer() {
   return {
-    data: "myData";
+    name: "Just the News"
   };
 }
+
+export default reducer;
