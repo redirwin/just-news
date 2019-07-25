@@ -25,16 +25,12 @@ class Headlines extends React.Component {
   };
 
   render() {
-    // console.log("Here they are: ", this.props.headlines.title);
     return (
       <div>
         <button onClick={this.getNews}>Get the News!</button>
-        <div>{this.headlines("Hello")}</div>
-        <div>
-          {this.props.headlines.map(headline => {
-            return headline.title;
-          })}
-        </div>
+        {this.props.headlines.map(headline => {
+          return <Headline headline={headline} />;
+        })}
       </div>
     );
   }
