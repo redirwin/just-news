@@ -2,19 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./styles/index.scss";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
+import { applyMiddleware, createStore } from "redux";
+import thunk from "redux-thunk";
 
 import rootReducer from "./store/reducers";
 
 import App from "./App";
 
-const store = createStore(rootReducer);
-
-function reducer() {
-  return {
-    name: "Just the News"
-  };
-}
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 ReactDOM.render(
   <Provider store={store}>
