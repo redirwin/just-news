@@ -1,13 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./styles/index.scss";
-import App from "./App";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 
-// import rootReducer from "./store/reducers";
+import rootReducer from "./store/reducers";
 
-const store = createStore(reducer);
+import App from "./App";
+
+const store = createStore(rootReducer);
 
 function reducer() {
   return {
@@ -16,7 +17,7 @@ function reducer() {
 }
 
 ReactDOM.render(
-  <Provider store="store">
+  <Provider store={store}>
     <App />
   </Provider>,
   document.getElementById("root")

@@ -1,14 +1,23 @@
 import React from "react";
-import "./styles/App.scss";
 import { connect } from "react-redux";
+
+import "./styles/App.scss";
+
+// action creators
+import { showName } from "./store/actions";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
   }
 
+  showName = e => {
+    this.props.showName();
+    // console.log("In showName!");
+  };
+
   render() {
-    return <p>Hello</p>;
+    return <button onClick={this.showName}>Show Name</button>;
   }
 }
 
@@ -20,5 +29,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  {}
+  { showName }
 )(App);
