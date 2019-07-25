@@ -9,8 +9,14 @@ export const getNews = () => dispatch => {
   dispatch({ type: FETCH_NEWS_START });
   axios
     .get(
-      "https://newsapi.org/v2/top-headlines?country=us&apiKey=fa6d8c6580fb4502a4350bfbdc239b28"
+      "https://newsapi.org/v2/top-headlines?country=us&pageSize=100&apiKey=fa6d8c6580fb4502a4350bfbdc239b28"
     )
-    .then(res => console.log(res))
-    .catch(err => console.log(err));
+    .then(res => {
+      // console.log(res.data);
+      dispatch({ type: FETCH_NEWS_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      console.log("Here's the error: ", err);
+      dispatch({ type: FETCH_NEWS_FAILURE, payload: err });
+    });
 };
