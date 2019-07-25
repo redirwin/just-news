@@ -7,7 +7,8 @@ import {
 const initialState = {
   error: "",
   isFetching: false,
-  headlines: {}
+  headlines: {},
+  results: 0
 };
 
 function reducer(state = initialState, action) {
@@ -18,7 +19,8 @@ function reducer(state = initialState, action) {
         ...state,
         error: "",
         isFetching: true,
-        headlines: {}
+        headlines: {},
+        results: 0
       };
     case FETCH_NEWS_SUCCESS:
       console.log("In FETCH_NEWS_SUCCESS!");
@@ -27,14 +29,16 @@ function reducer(state = initialState, action) {
         ...state,
         error: "",
         isFetching: false,
-        headlines: action.payload.articles
+        headlines: action.payload.articles,
+        results: action.payload.totalResults
       };
     case FETCH_NEWS_FAILURE:
       return {
         ...state,
         error: action.payload,
         isFetching: false,
-        headlines: {}
+        headlines: {},
+        results: 0
       };
     default:
       return state;

@@ -17,13 +17,18 @@ class App extends React.Component {
   };
 
   render() {
-    return <button onClick={this.getNews}>Show Name</button>;
+    return (
+      <>
+        <button onClick={this.getNews}>Get the News!</button>
+        <p>{this.props.results} total results.</p>
+      </>
+    );
   }
 }
 
 const mapStateToProps = state => {
   return {
-    data: state.name
+    results: state.results
   };
 };
 
