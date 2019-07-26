@@ -4,30 +4,31 @@ import Loader from "react-loader-spinner";
 
 import "../styles/App.scss";
 
-// action creators
+// actions
 import { getNews } from "../store/actions";
 
 // components
 import Headline from "./Headline";
 
-const Headlines = props => {
-  function getNews(e) {
-    props.getNews();
+class Headlines extends React.Component {
+  componentDidMount() {
+    this.props.getNews();
   }
 
-  if (props.isFetching) {
-    return <Loader type="Puff" color="#00BFFF" height="100" width="100" />;
-  }
+  render() {
+    if (this.props.isFetching) {
+      return <Loader type="Puff" color="#00BFFF" height="100" width="100" />;
+    }
 
-  return (
-    <div>
-      <button onClick={getNews}>Get the News!</button>
-      {props.headlines.map(headline => {
-        return <Headline headline={headline} />;
-      })}
-    </div>
-  );
-};
+    return (
+      <div>
+        {this.props.headlines.map(headline => {
+          return <Headline headline={headline} />;
+        })}
+      </div>
+    );
+  }
+}
 
 const mapStateToProps = state => {
   return {

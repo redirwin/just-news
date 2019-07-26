@@ -14,12 +14,6 @@ export default function App() {
   );
 }
 
-const mapStateToProps = state => {
-  return {
-    results: state.results
-  };
-};
-
 const AppWrapper = styled.div`
   width: 80%;
   margin: 5rem auto;
